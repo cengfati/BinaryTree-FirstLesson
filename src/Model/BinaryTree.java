@@ -102,6 +102,8 @@ public class BinaryTree<ContentType> {
 			} else {
 				node.right = pLeftTree;
 			}
+		}else{
+			this.node = null;
 		}
 	}
 
