@@ -92,12 +92,12 @@ public class BinaryTree<ContentType> {
 		//TODO 01c
 		if(pContent != null) {
 			node = new BTNode<>(pContent);
-			if (pLeftTree == null) {
+			if (pLeftTree != null) {
 				node.left = new BinaryTree<>();
 			} else {
 				node.left = pLeftTree;
 			}
-			if (pRightTree == null) {
+			if (pRightTree != null) {
 				node.right = new BinaryTree<>();
 			} else {
 				node.right = pLeftTree;
@@ -115,11 +115,7 @@ public class BinaryTree<ContentType> {
 	 */
 	public boolean isEmpty() {
 		//TODO 01d
-		if(node.right == null || node.left == null){
-			return true;
-		}else{
-			return false;
-		}
+		return node == null;
 	}
 
 	/**
@@ -137,8 +133,6 @@ public class BinaryTree<ContentType> {
 		if(pContent != null){
 			if(isEmpty()){
 				node = new BTNode<>(pContent);
-				node.left = null;
-				node.right = null;
 			}else{
 				node.content = pContent;
 			}
@@ -226,5 +220,4 @@ public class BinaryTree<ContentType> {
 			return node.right;
 		}
 	}
-
 }
