@@ -123,10 +123,13 @@ public class MainController {
             panel.addObject(node);
 
             if(!tree.getLeftTree().isEmpty()){
-              //  panel.addObject(new TreePath(startX, startY,startX- spaceToTheSide, ));
+              panel.addObject(new TreePath(startX, startY,startX- spaceToTheSide, startY+70,5,true));
+              showTree(tree.getLeftTree(), panel, startX -spaceToTheSide,startY+65, spaceToTheSide/2);
             }
-            showTree(tree.getLeftTree(), panel, startX -spaceToTheSide-5,startY+70, spaceToTheSide/2);
-            showTree(tree.getRightTree(), panel, startX +spaceToTheSide-5,startY+70, spaceToTheSide/2);
+            if(!tree.getRightTree().isEmpty()) {
+                panel.addObject(new TreePath(startX, startY,startX+ spaceToTheSide, startY+70,5,true));
+                showTree(tree.getRightTree(), panel, startX + spaceToTheSide, startY + 65, spaceToTheSide / 2);
+            }
         }
     }
 
@@ -146,7 +149,14 @@ public class MainController {
      */
     private String traverse(BinaryTree tree){
         //TODO 04: Nachdem wir geklärt haben, was eine Traversierung ist, muss diese Methode noch vervollständigt werden. Sollte ein Kinderspiel sein.
-        return "Traverse? Wat dat denn?";
+
+        if (!tree.getLeftTree().isEmpty()) {
+            return tree.getLeftTree().getContent() + "" + traverse(tree.getLeftTree());
+        }
+        if (!tree.getRightTree().isEmpty()) {
+            return tree.getRightTree().getContent() + "" + traverse(tree.getRightTree());
+        }
+        return "-"+ "End";
     }
 	
     /**
